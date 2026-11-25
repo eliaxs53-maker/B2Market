@@ -17,11 +17,11 @@ B2Market centra su desarrollo apoyándose en la biblioteca de la EPN como punto 
 - Una vez pagado el sistema genera un código único de retiro para que la bibliotecaria valide y entregue el libro de forma rápida y segura.
 Con esto, los vendedores harán publico su libro y no tendrán la necesidad de responder varios mensajes y cordinar la entrega del libro. En cambio, los compradores, podrán buscar el libro que necesitan de acuerdo a su presupuesto y poderlo retirar en ese mismo momento de manera segura.
 
-## Tecnologías
+# Tecnologías
 - **Lenguaje / Framework:** C# (.NET / Windows Forms)
 - **IDE:** Visual Studio
 - **Control de versiones:** Git y GitHub
 
-## Estructura del proyecto
+# Estructura del proyecto
 - `B2Market.sln` / `B2Market/`: Solución y código fuente de la aplicación.
 - `Documentacion/01_Gestion_y_Alcance/`: Documentos de visión, alcance y matriz de interesados.
