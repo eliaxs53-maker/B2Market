@@ -11,7 +11,7 @@ Aunque los estudiantes han buscado maneras de mejorar la comunicación, la búsq
 Además, la entrega es un proceso complicado. Es necesario coordinar horarios y, muchas veces, esperar bastante tiempo para concretar el encuentro. Como las personas no se conocen, también se genera desconfianza e inseguridad, y no existe ninguna garantía de pago ni de entrega.
 
 # Solución
-B2Market centra su desarrollo apoyándose en la biblioteca de la EPN como punto de custodia y entrega:
+B2Market centra su desarrollo apoyándose en la biblioteca de la EPN (precisamente la biblioteca que se encuentra en el mismo edificio en el que opera el CEC) como punto de custodia y entrega:
 - Los vendedores publican sus libros en la aplicación y dejan el libro dentro de la biblioteca.
 - Los compradores consultan el catálogo, reservan el libro por hasta 12 horas y realizan el pago mediante DeUna o en efectivo con recargo del 10%.
 - Una vez pagado el sistema genera un código único de retiro para que la bibliotecaria valide y entregue el libro de forma rápida y segura.
