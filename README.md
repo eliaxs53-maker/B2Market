@@ -1,2 +1,27 @@
 # B2Market
-B2Market es una apicación creada para ayudar a los estudiantes del Centro de Educación Continua (CEC) en la compra y venta de libros dentro de la EPN. Busca facilitar la comunicación entre vendedores y compradores, logrando un sistema de búsqueda y entrega de libros más eficiente y segura.
+B2Market es una apicación de escritorio creada para ayudar a los estudiantes del Centro de Educación Continua (CEC) en la compra y venta de libros dentro de la EPN. Busca facilitar la comunicación entre vendedores y compradores, logrando un sistema de búsqueda y entrega de libros más eficiente y segura.
+
+# Integrantes
+- Katherine Tipán
+- Dylan Haro
+- Patricio Andy
+
+# Problemática
+Aunque los estudiantes han buscado maneras de mejorar la comunicación, la búsqueda y la oferta de libros, el proceso actual sigue generando desorden, pérdida de tiempo y confusión. Con frecuencia, las personas interesadas escriben para pedir información sobre un libro y reciben una respuesta negativa: el libro ya no está en venta o su precio excede el presupuesto.
+Además, la entrega es un proceso complicado. Es necesario coordinar horarios y, muchas veces, esperar bastante tiempo para concretar el encuentro. Como las personas no se conocen, también se genera desconfianza e inseguridad, y no existe ninguna garantía de pago ni de entrega.
+
+# Solución
+B2Market centra su desarrollo apoyándose en la biblioteca de la EPN como punto de custodia y entrega:
+- Los vendedores publican sus libros en la aplicación y dejan el libro dentro de la biblioteca.
+- Los compradores consultan el catálogo, reservan el libro por hasta 12 horas y realizan el pago mediante DeUna o en efectivo con recargo del 10%.
+- Una vez pagado el sistema genera un código único de retiro para que la bibliotecaria valide y entregue el libro de forma rápida y segura.
+Con esto, los vendedores harán publico su libro y no tendrán la necesidad de responder varios mensajes y cordinar la entrega del libro. En cambio, los compradores, podrán buscar el libro que necesitan de acuerdo a su presupuesto y poderlo retirar en ese mismo momento de manera segura.
+
+## Tecnologías
+- **Lenguaje / Framework:** C# (.NET / Windows Forms)
+- **IDE:** Visual Studio
+- **Control de versiones:** Git y GitHub
+
+## Estructura del proyecto
+- `B2Market.sln` / `B2Market/`: Solución y código fuente de la aplicación.
+- `Documentacion/01_Gestion_y_Alcance/`: Documentos de visión, alcance y matriz de interesados.
