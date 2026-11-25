@@ -25,6 +25,7 @@ El sistema no contara con la capacidad de:
 
 # Restricciones
 - **Lugar de uso:** La aplicación solo se utiliza en las computadoras de la biblioteca de la universidad.
+- **Usuarios:** Al estar ubicado dentro de las instalaciones EPN/CEC, los participantes solo serán estudiantes de la EPN y CEC, no personas externas a estos.
 - **Medios de pago:** Únicamente transferencia (API de DeUna) o pago en físico.
 - **Tiempo de reserva:** Un libro con compra iniciada permanece bloqueado 24 horas, contadas desde que se genera el comprobante o el código de pago. Si no se paga, vuelve a estar Disponible y el código generado vence.
 - **Comisión:** Solo existe en el pago físico, equivale al 10 % del precio y la recibe la bibliotecaria. El resto del dinero corresponde al vendedor.
