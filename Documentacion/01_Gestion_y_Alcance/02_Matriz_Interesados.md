@@ -3,6 +3,7 @@
 # 1. Tabla de interesados
 
 | Interesado | Clasificación | Interés | Influencia | Necesidad principal |
+|---|---|
 | **Comprador**| Interno o externo a la universidad; directo | Conseguir libros de forma segura y a buen precio | Alta | Reservar un libro y pagar con facilidad |
 | **Vendedor** | Interno o externo; directo | Vender sus libros y recibir su dinero completo | Alta | Publicar fácilmente y recibir el pago íntegro |
 | **Bibliotecaria** | Interno; directo | Tener una tarea manejable y recibir compensación por los cobros físicos | Media | Código claro del libro y herramienta simple para marcarlo como Vendido |
