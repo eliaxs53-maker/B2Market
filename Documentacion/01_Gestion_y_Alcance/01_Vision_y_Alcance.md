@@ -1,4 +1,4 @@
-# 01. Visión y Alcance
+# 01. Visión y Alcance - B2Market
 
 # Propósito
 Su propósito es reemplazar la venta informal y desorganizada por mensajes, que hoy genera muchas complicaciones para la cordinación entre estudiantes con una aplicación de escritorio donde:
