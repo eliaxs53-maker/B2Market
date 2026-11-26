@@ -1,31 +1,34 @@
 # Modelo de Casos de Uso — Sistema de compra de libros del ingles(cec)
 ## 1. Identificación de actores
-* Cliente : Usuario que necesita un libro de un determinado nivel del ingles del cec (Solo estudiantes pertenecientes a la Escuela Politécnica Nacional)
+* Comprador / Vendedor : Usuario que necesita comprar o vender un libro de un determinado nivel del ingles del cec (Solo estudiantes pertenecientes a la Escuela Politécnica Nacional)
 * Bibliotecaria: Persona que recepta el pago o comprobante de pago y entrega el respectivo producto al usuario
-* Vendedor: Registra o publicar libros disponibles para venta
+* API de Pagos (Actor secundario / sistema externo): Servicio externo encargado de generar códigos de pago por transferencia y enviar las confirmaciones de pago al sistema.
 * Administrador: Persona  que gestiona, corrige o modifica registros, catálogos, usuarios y configuraciones del sistema. 
 ## 2. Listado de casos de uso
-* CU-01: Publicación del libro: el vendedor escribe los detalles del libro con su respectiva imagen y el precio
-* CU-02: Compra del libro: El usuario busca el libro que quiere , lo selecciona, selecciona su método de pago y recepta el libro
-* CU-03: Entrega del libro (transferencia) : La bibliotecaria recepta el pago y luego entrega el libro;
-* CU-04: Entrega del libro (efectivo) : La bibliotecaria recepta el pago en efectivo luego realiza la transferencia al código que se le brinda y luego entrega el libro;
-* CU-05: Administrar y corregir registros del sistema:** El administrador corrige datos, actualiza catálogos, gestiona usuarios o ajusta registros cuando se requiere modificar información del sistema.
+* CU-01: Registro e inicio de sesión: El usuario registra una cuenta con correo institucional o personal.
+* CU-02: Publicación de libro : El vendedor publica un libro con título, autor, nivel, descripción, precio mayor a cero y al menos una fotografía, quedando registrado en estado "Por recibir".
+* CU-03: Reserva de libro : El comprador visualiza los libros y  reserva un libro `Disponible` publicado por otro usuario, cambiándolo a estado `Pendiente` y eligiendo su método de pago (transferencia o efectivo con comisión del 10 %).
+* CU-04: Generación de código de pago por transferencia : Al elegir transferencia, el sistema solicita a la API de pagos un código por el valor del libro con vencimiento a 24 horas, o permite reintentar / cambiar a efectivo si la API falla.
+* CU-05: Confirmación de transferencia y cierre de venta : El sistema actualiza el libro a `Vendido` en máximo 30 segundos tras recibir la confirmación válida de una reserva vigente, ignorando duplicados y registrando incidencias si llega fuera de plazo.
+* CU-06: Validación de pago y entrega de libro : La bibliotecaria verifica en el sistema que la transferencia esté confirmada —o recibe el pago en efectivo incluyendo la comisión del 10 %—, marca el libro como Vendido y lo entrega físicamente al comprador.
 ## 3. Escenario detallado: CU-01: Publicación del libro:
 * Actor principal: Vendedor.
+* Requerimiento asociado: RF-02.
 * Precondiciones:
-  * La aplicación se encuentra abierta e inicializada registro/inicio de secion .
-  * Se muestran los diferentes libros en venta en el catalogo .
+  * El vendedor ha registrado su cuenta.
+  * El vendedor ha iniciado sesión en B2Market.
 * Flujo principal:
   1. El vendedor ingresa al formulario de publicación de un nuevo libro.
-  2. El vendedor completa los datos obligatorios del libro: título, nivel de inglés del CEC al que corresponde, estado/descripción y precio de venta.
-  3. El vendedor adjunta una imagen clara del libro.
-  4. El vendedor confirma la operación haciendo clic en el botón de publicar/guardar.
-  5. El sistema valida que todos los campos obligatorios estén llenos, que el precio sea un valor numérico válido mayor a `0` y que el archivo de imagen cumpla con el formato permitido.
-  6. El sistema registra el libro en el catálogo con estado "Disponible" asociado al vendedor.
-  7. El sistema muestra un mensaje de confirmación e incorpora el libro en el listado visible para los clientes.
+  2. El vendedor completa los datos obligatorios del ejemplar: título, autor, nivel de inglés del CEC, descripción y precio de venta.
+  3. El vendedor adjunta  una fotografía del libro.
+  4. El vendedor confirma la publicación.
+  5. El sistema valida que todos los campos estén completos, que el precio sea un valor numérico mayor a `0` y que exista al menos una fotografía válida.
+  6. El sistema registra el libro en la base de datos asignándole el estado `Por recibir`.
+  7. El sistema muestra un mensaje de confirmación indicando que el libro queda pendiente de recepción física en la biblioteca.
 * Flujos alternativos:
-  1. FA-01 — Libro sin stock / ya reservado: Si otro estudiante compra el libro antes de confirmar, el sistema notifica que ya no está disponible y actualiza el catálogo.
-  2. FA-02 — Comprobante no adjuntado en transferencia: Si elige pago por transferencia y no sube el comprobante, el sistema solicita adjuntar el archivo antes de confirmar.
-  3.FA-03 — Cancelar compra:** Si el cliente decide no continuar antes de confirmar la solicitud, el sistema descarta la selección, libera el libro y regresa al catálogo sin generar ningún pedido.
-* Postproducciones:
-* El libro queda almacenado en el sistema y visible en el catálogo para que los clientes puedan buscarlo y comprarlo.
+  * FA-01 — Precio inválido (menor o igual a cero): Si el vendedor ingresa un precio `<= 0` o no numérico, el sistema rechaza la publicación, muestra un mensaje de validación y solicita corregir el monto.
+  * FA-02 — Fotografía faltante o formato inválido: Si el vendedor no adjunta al menos una fotografía o el archivo no cumple con el formato permitido, el sistema detiene el registro e informa el error sin borrar los demás datos ingresados.
+  * FA-03 — Campos obligatorios incompletos:Si falta título, autor, nivel o descripción, el sistema indica los campos faltantes y no guarda el registro.
+* Postcondiciones:
+  * El libro queda almacenado en el sistema con estado `Por recibir`.
+  * El libro no aparece visible en el catálogo de compra hasta ser recibido en la biblioteca.
