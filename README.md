@@ -31,10 +31,18 @@ B2Market/
 │   ├── 01_Gestion_y_Alcance/
 │   │   ├── 01_Vision_y_Alcance.md
 │   │   └── 02_Matriz_Interesados.md
-│   ├── 02_Adquisicion_e_Interesados/     
-│   ├── 03_Catalogo_y_Refinamiento/       
-│   ├── 04_Requerimientos_Verificables/    
-│   ├── 05_Modelado_y_Priorizacion/        
+│   ├── 02_Adquisicion_e_Interesados/
+│   │   ├── 01_Adquisicion_Requerimientos.md 
+│   ├── 03_Catalogo_y_Refinamiento/
+│   │   ├── 01_Catalogo_Requerimientos.md
+│   │   ├── 02_Informe_Analisis_Refinamiento.md
+│   ├── 04_Requerimientos_Verificables/
+│   │   ├── 01_Requerimientos_Refinados.md
+│   ├── 05_Modelado_y_Priorizacion/
+│   │   ├── 01_Modelo_Casos_Uso.md
+│   │   ├── 02_Diagrama_Casos_Uso.png
+│   │   └── 03_Historias_Usuario.md
+│   │   └── 04_Matriz_Priorizacion_MoSCoW.md
 │   ├── 06_Trazabilidad_y_Validacion/      
 │   │   ├── 01_Matriz_Trazabilidad.md
 │   │   ├── 02_Resultados_Validacion.md
