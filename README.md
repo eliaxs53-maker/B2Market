@@ -24,20 +24,21 @@ Con esto, los vendedores harán publico su libro y no tendrán la necesidad de r
 
 # Estructura del proyecto
 
-- B2Market
-│── README.md
-│── /Documentacion
-│    ├── /01_Gestion_y_Alcance
-│    ├── /02_Adquisicion_e_Interesados
-│    ├── /03_Catalogo_y_Refinamiento
-│    ├── /04_Requerimientos_Verificables
-│    ├── /05_Modelado_y_Priorizacion
-│    ├── /06_Trazabilidad_y_Validacion
-│    │    ├── 01_Matriz_Trazabilidad.md (o .pdf)
-│    │    ├── 02_Resultados_Validacion.md (o .pdf)
-│    │    └── 03_Control_Versiones_SRS.md (o .pdf)
-│    └── SRS_Final.md (o .pdf)
-│── MiSolucion.sln
-│── /MiProyecto (Carpeta del proyecto Windows Forms)
-│    └── ... (archivos generados por Visual Studio)
-
+```text
+B2Market/
+├── README.md
+├── Documentacion/
+│   ├── 01_Gestion_y_Alcance/
+│   │   ├── 01_Vision_y_Alcance.md
+│   │   └── 02_Matriz_Interesados.md
+│   ├── 02_Adquisicion_e_Interesados/     
+│   ├── 03_Catalogo_y_Refinamiento/       
+│   ├── 04_Requerimientos_Verificables/    
+│   ├── 05_Modelado_y_Priorizacion/        
+│   ├── 06_Trazabilidad_y_Validacion/      
+│   │   ├── 01_Matriz_Trazabilidad.md
+│   │   ├── 02_Resultados_Validacion.md
+│   │   └── 03_Control_Versiones_SRS.md
+│   └── SRS_Final.md                       
+├── B2Market.sln
+└── B2Market/                            
