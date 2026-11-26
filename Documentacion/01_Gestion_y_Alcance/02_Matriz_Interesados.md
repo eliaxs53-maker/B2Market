@@ -4,32 +4,19 @@
 
 | Interesado | Clasificación | Interés | Influencia | Necesidad principal |
 |---|---|---|---|---|
-| **Comprador** (estudiante o persona externa) | Interno o externo a la universidad; directo | Conseguir libros de forma segura y a buen precio | Alta | Reservar un libro y pagar con facilidad |
-| **Vendedor** | Interno o externo; directo | Vender sus libros y recibir su dinero completo | Alta | Publicar fácilmente y recibir el pago íntegro |
-| **Bibliotecaria** | Interno; directo | Tener una tarea manejable y recibir compensación por los cobros físicos | Media | Código claro del libro y herramienta simple para marcarlo como Vendido |
-| **Administrador del sistema** (equipo desarrollador) | Interno; directo | Un sistema que opere con mínima intervención | Alta | Reglas automáticas de reserva y liberación, y control de estados |
-| **Entidad de pagos** (API de DeUna) | Externo; indirecto | Uso correcto de su servicio | Media | Integración conforme a su documentación |
-| **Autoridades de la universidad o biblioteca** | Interno; indirecto | Que el servicio no afecte el funcionamiento ni la imagen de la biblioteca | Alta | Control del uso de los equipos y de los cobros |
-| **Autoridad tributaria (SRI)** | Externo; indirecto | Cumplimiento de obligaciones por las comisiones (por confirmar si aplica) | Baja | Registro claro de las comisiones cobradas |
+| **Comprador** (estudiante de la EPN o CEC) | Interno a la EPN/CEC; directo | Alto (Conseguir libros de forma rápida, segura y económica) | Alta | Buscar un libro y adquirirlo con facilidad según sus preferencias |
+| **Vendedor** | Interno a la EPN/CEC; directo | Alto (Vender sus libros y recibir su dinero) | Alta | Publicar fácilmente y recibir el pago de manera segura y eficiente |
+| **Bibliotecaria** | Interno; directo | Media (Tener una tarea manejable y recibir compensación únicamente por los cobros físicos | Media | Código claro del libro, acceso preferencial en el sistema y retribución económica por pagos físicos |
+| **Administrador del sistema** (equipo desarrollador) | Interno; directo | Alto (Un sistema que opere con mínima intervención) | Alta | Mantener la integridad de los estados (`Disponible`, `Pendiente`, `Vendido`), automatizar la liberación de reservas y asegurar la estabilidad de la aplicación en los equipos de biblioteca |
+| **Entidad de pagos** (API de DeUna) | Externo; indirecto | Medio (Uso correcto de su servicio) | Media | ue la integración cumpla sus especificaciones técnicas para generar códigos de cobro y emitir notificaciones válidas de confirmación de pago |
+| **Autoridades de la universidad o biblioteca** | Interno; indirecto | Alto (Que el servicio no afecte el funcionamiento ni la imagen de la biblioteca) | Alta | Asegurar el uso adecuado de las computadoras de la biblioteca, mantener el orden en los espacios físicos y respetar los reglamentos y horarios institucionales |
+| **Autoridad tributaria (SRI)** | Externo; indirecto | Baja (Cumplimiento de obligaciones por las comisiones (por confirmar si aplica)) | Baja | Registro claro de las comisiones cobradas |
 
-## 2. Conflictos entre interesados y su resolución
+## 2. Conflictos y resolución
 
-### Conflicto 1: Comprador vs. Bibliotecaria (comisión del pago físico)
-
-| Paso | Detalle |
-|---|---|
-| **Identificación** | El pago físico implica un costo extra que afecta al comprador y beneficia a la bibliotecaria. |
-| **Documentación** | **Comprador:** desea no pagar costos adicionales. **Bibliotecaria:** debe ser compensada por recibir el dinero y atender el trámite. |
-| **Revisión de reglas** | El propietario definió que la transferencia no tiene comisión y el pago físico sí (10 % del precio). |
-| **Negociación** | La comisión existe solo en el pago físico, se muestra al comprador antes de confirmar y se puede evitar eligiendo transferencia. |
-| **Transformación en requerimiento** | RF-08 (aviso de comisión con aceptación explícita) y RD-01 (comisión solo en pago físico). |
-
-### Conflicto 2: Comprador vs. Vendedor (tiempo de bloqueo del libro)
-
-| Paso | Detalle |
-|---|---|
-| **Identificación** | El comprador quiere más tiempo para pagar; el vendedor no quiere que su libro quede bloqueado indefinidamente. |
-| **Documentación** | **Comprador:** necesita un plazo razonable para pagar. **Vendedor:** necesita que el libro vuelva a estar disponible si no se paga. |
-| **Revisión de reglas** | El propietario definió un bloqueo de 24 horas, contadas desde que se genera el comprobante o código de pago. |
-| **Negociación** | Se acuerda un límite fijo de 24 horas; pasado ese tiempo sin pago, el sistema libera el libro automáticamente. |
-| **Transformación en requerimiento** | RD-02 (bloqueo de 24 horas) y RF-10 (liberación automática del libro). |
+| N.° | Partes involucradas | Conflicto | Solución |
+| :--- | :--- | :--- | :--- |
+| **1** | **Comprador vs. Bibliotecaria** | El comprador que paga en efectivo no desea asumir costos adicionales al precio del libro, mientras que la bibliotecaria requiere compensación por recibir el dinero y gestionar el trámite presencial. | Se establece una comisión del **10%** únicamente en pagos físicos, exigiendo que el sistema muestre el valor adicional y solicite aceptación explícita antes de confirmar, dejando siempre disponible la transferencia vía DeUna con **0% de comisión**. |
+| **2** | **Comprador vs. Vendedor** | El comprador busca el mayor tiempo posible para acercarse a pagar su reserva, pero el vendedor necesita evitar que su ejemplar quede retenido sin venderse si el pago no se concreta. | Se fija un bloqueo máximo de **24 horas** contadas desde la generación del código o comprobante de pago; si transcurrido ese tiempo no hay pago confirmado, el libro vuelve automáticamente a estado `Disponible`. |
+| **3** | **Usuarios vs. Autoridades de Biblioteca** | Los estudiantes podrían esperar acceso remoto desde sus dispositivos o disponibilidad continua 24/7, lo cual entra en conflicto con las políticas de seguridad y horarios físicos de la biblioteca. | Se define como restricción del sistema que la aplicación opera exclusivamente en las computadoras autorizadas de la biblioteca y durante su horario oficial de atención. |
+| **4** | **Comprador vs. Entidad de Pagos (API DeUna)** | Una falla o demora temporal de la API de pagos puede impedir generar el código de transferencia o confirmar la transacción en el momento. | Ante errores de comunicación con la API, el sistema notifica al usuario y ofrece reintentar la operación o cambiar a pago físico con aviso previo de la comisión correspondiente. |
