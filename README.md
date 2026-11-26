@@ -13,7 +13,7 @@ Además, la entrega es un proceso complicado. Es necesario coordinar horarios y,
 # Solución
 B2Market centra su desarrollo apoyándose en la biblioteca de la EPN (precisamente la biblioteca que se encuentra en el mismo edificio en el que opera el CEC) como punto de custodia y entrega:
 - Los vendedores publican sus libros en la aplicación y dejan el libro dentro de la biblioteca.
-- Los compradores consultan el catálogo, reservan el libro por hasta 12 horas y realizan el pago mediante DeUna o en efectivo con recargo del 10%.
+- Los compradores consultan el catálogo, reservan el libro por hasta 24 horas y realizan el pago mediante DeUna o en efectivo con recargo del 10%.
 - Una vez pagado el sistema genera un código único de retiro para que la bibliotecaria valide y entregue el libro de forma rápida y segura.
 Con esto, los vendedores harán publico su libro y no tendrán la necesidad de responder varios mensajes y cordinar la entrega del libro. En cambio, los compradores, podrán buscar el libro que necesitan de acuerdo a su presupuesto y poderlo retirar en ese mismo momento de manera segura.
 
