@@ -48,5 +48,4 @@ B2Market/
 │   │   ├── 02_Resultados_Validacion.md
 │   │   └── 03_Control_Versiones_SRS.md
 │   └── SRS_Final.md                       
-├── B2Market.sln
-└── B2Market/                            
+└── B2Market.sln                            
