@@ -23,5 +23,21 @@ Con esto, los vendedores harán publico su libro y no tendrán la necesidad de r
 - **Control de versiones:** Git y GitHub
 
 # Estructura del proyecto
-- `B2Market.sln` / `B2Market/`: Solución y código fuente de la aplicación.
-- `Documentacion/01_Gestion_y_Alcance/`: Documentos de visión, alcance y matriz de interesados.
+
+- B2Market
+│── README.md
+│── /Documentacion
+│    ├── /01_Gestion_y_Alcance
+│    ├── /02_Adquisicion_e_Interesados
+│    ├── /03_Catalogo_y_Refinamiento
+│    ├── /04_Requerimientos_Verificables
+│    ├── /05_Modelado_y_Priorizacion
+│    ├── /06_Trazabilidad_y_Validacion
+│    │    ├── 01_Matriz_Trazabilidad.md (o .pdf)
+│    │    ├── 02_Resultados_Validacion.md (o .pdf)
+│    │    └── 03_Control_Versiones_SRS.md (o .pdf)
+│    └── SRS_Final.md (o .pdf)
+│── MiSolucion.sln
+│── /MiProyecto (Carpeta del proyecto Windows Forms)
+│    └── ... (archivos generados por Visual Studio)
+
